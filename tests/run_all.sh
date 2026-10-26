@@ -22,6 +22,7 @@
 #      clear_output(wait) / update_display_data)
 #      + install_spec.lua (installing the binary without lazy.nvim, #33)
 #      + output_cache_spec.lua (equal-length output after fast reruns)
+#      + html_table_spec.lua (a Styler-like output shows its HTML table as text)
 #      + stale_output_e2e.lua (redefine a function and rerun its unchanged caller)
 #      + output_view_spec.lua (outputs cut, expanded, hidden or given a number
 #      of lines, #37)
@@ -162,7 +163,7 @@ section "remote-hl spec" "$?"
 # plain `qa!` there that crash used to count as a pass.
 for spec in remote_pick_open_spec remote_open_layout_spec dispatch_keys_spec deploy_probe_spec \
             keymap_override_spec image_b64_spec reopen_lsp_spec edit_nav_spec \
-            multi_image_spec install_spec output_cache_spec stale_output_e2e output_view_spec; do
+            multi_image_spec install_spec output_cache_spec stale_output_e2e output_view_spec html_table_spec; do
   out=$(nv --headless -u NONE -c "luafile $ROOT/tests/$spec.lua" -c 'cquit 3' 2>&1)
   rc=$?
   echo "$out" | tail -1
